@@ -1,0 +1,8 @@
+"0","#using the ridge regression"
+"0","X1 <- t(X)%*%X + 0.5*diag(25)"
+"0","svals1 <- svd(X1)$d"
+"0","max(svals1) / min(svals1)"
+"1","[1]"
+"1"," 1.73307"
+"1","
+"

@@ -1,0 +1,4 @@
+"0","set.seed(100)"
+"0","n <- 1000; p <- 25"
+"0","beta <- c(1, rep(0, p - 1))"
+"0","X <- matrix(rnorm(n * p), ncol = p)"

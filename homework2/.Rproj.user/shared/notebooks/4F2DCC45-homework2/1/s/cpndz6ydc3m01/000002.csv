@@ -1,0 +1,8 @@
+"0","casl_ols_svd  <- function(X, y){"
+"0","    svd_output <- svd(X)"
+"0","    r <- sum(svd_output$d > .Machine$double.eps)"
+"0","    U <- svd_output$u[, 1:r]"
+"0","    V <- svd_output$v[, 1:r]"
+"0","    beta <- V %*% (t(U) %*% y / svd_output$d[1:r])"
+"0","    return(beta)"
+"0","}"

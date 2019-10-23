@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1571685280196.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1300096985",
+    "id" : "11426734",
+    "lastKnownWriteTime" : 1571862075,
+    "last_content_update" : 1571862075884,
+    "path" : "~/Desktop/comp stats/homework2/homework2/R/ridge_regression.R",
+    "project_path" : "R/ridge_regression.R",
+    "properties" : {
+        "cursorPosition" : "9,10",
+        "scrollLine" : "1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

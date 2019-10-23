@@ -1,0 +1,335 @@
+---
+title: "homework2-1,4,5"
+author: "Tong Wei"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{homework2-1,4,5}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+.
+
+
+
+
+
+## Question 1
+
+The least square estimator for $\beta$ is the set of $\beta$ that minimize the sum of the
+squared residuals:
+
+$$
+min \ u'u = (Y-\beta X)'(Y- \beta X)\\
+
+
+
+
+\begin{split} 
+u'u &= (Y-\beta X)'(Y- \beta X)\\
+&= Y'Y − \beta 'X 'Y − Y' X\beta + \beta 'X'X \beta\\
+&= Y'Y − 2\beta 'X 'Y + \beta 'X 'X\beta
+\end{split}
+
+$$
+
+Then take the derivative of u'u:
+
+$$
+\frac{\partial (u'u) }{\partial \beta} = -2X'Y+2X'X\beta
+$$
+
+Set the equation to 0 we have:
+
+$$
+−2X'Y + 2X'X\hat\beta = 0 \\
+X'X\hat\beta = X'Y \\
+\hat\beta = (X'X)^{-1}X'Y
+$$
+
+Consider the regression model of y = $\beta_0$ + $\beta_1$X:
+In the matrix form, this is:
+
+$$
+\begin{bmatrix}
+y_1 \\
+y_2 \\
+... \\
+y_n
+\end{bmatrix}
+ = 
+ \begin{bmatrix}
+1 & x_1 \\
+1 & x_2 \\
+... & ... \  \\
+1 & x_n
+\end{bmatrix}
+\begin{bmatrix}
+\beta_0 \\
+\beta_1  \\
+\end{bmatrix}
+$$
+
+$$
+X'X = 
+\begin{bmatrix}
+1&1&...&1 \\
+x_1&x_2&...&x_n  \\
+\end{bmatrix}
+\begin{bmatrix}
+1&x_1\\
+1&x_2\\
+...&...\\
+1&x_n\\
+\end{bmatrix}
+=\begin{bmatrix}
+\sum_{i = 1}^{n}1&\sum_{i = 1}^{n}x_i\\
+\sum_{i = 1}^{n}x_i&\sum_{i = 1}^{n}x_i^2\\
+\end{bmatrix}
+=\begin{bmatrix}
+n&n\bar x\\
+n\bar x&\sum_{i = 1}^{n}x_i^2\\
+\end{bmatrix}
+$$
+
+So the inverse matrix of X'X is:
+
+$$
+\begin{split}
+(X'X)^{-1} &= \frac{1}{n\sum_{i = 1}^{n}x_i^2 + - (n\bar x)^2}
+\begin{bmatrix}
+\sum_{i = 1}^{n}x_i^2&-n\bar x\\
+-n\bar x&n\\
+\end{bmatrix}\\
+& = \frac{1}{n(\sum_{i = 1}^{n}x_i -\bar x )^2}
+\begin{bmatrix}
+\sum_{i = 1}^{n}x_i^2&-n\bar x\\
+-n\bar x&n\\
+\end{bmatrix}\\
+\end{split}
+
+
+$$
+
+the matrix of X'Y is 
+
+$$
+X'Y = \begin{bmatrix}
+1&1&...&1 \\
+x_1&x_2&...&x_n  \\
+\end{bmatrix}
+
+\begin{bmatrix}
+y_1\\
+y_2\\
+...\\
+y_n
+\end{bmatrix}
+=\begin{bmatrix}
+\sum_{i = 1}^{n}y_i\\
+\sum_{i = 1}^{n}x_iy_i
+\end{bmatrix}
+= \begin{bmatrix}
+n\bar y\\
+\sum_{i = 1}^{n}x_iy_i
+\end{bmatrix}
+$$
+
+combine them together
+
+$$
+\begin{split}
+\hat \beta &= \frac{1}{n(\sum_{i = 1}^{n}x_i -\bar x )^2}
+\begin{bmatrix}
+\sum_{i = 1}^{n}x_i^2&-n\bar x\\
+-n\bar x&n\\
+\end{bmatrix}
+
+\begin{bmatrix}
+n\bar y\\
+\sum_{i = 1}^{n}x_iy_i
+\end{bmatrix}\\
+
+&=\frac{1}{(\sum_{i = 1}^{n}x_i -\bar x )^2}
+\begin{bmatrix}
+\bar y\sum_{i=1}^{n}x_i^2 - \bar x \sum_{i =1}^{n}x_iy_i\\
+-n\bar x  \bar y+\sum_{i = 1}^{n}x_iy_i
+\end{bmatrix}\\
+
+&= \frac{1}{(\sum_{i = 1}^{n}x_i -\bar x )^2}
+\begin{bmatrix}
+\bar y\sum_{i=1}^{n}x_i^2 - \bar x^2\bar y + \bar x^2 \bar y - \sum_{i =1}^{n}x_iy_i\\
+\sum_{i = 1}^{n} (x_iy_i - \bar x \bar y)
+\end{bmatrix}\\
+
+&= \frac{1}{(\sum_{i = 1}^{n}x_i -\bar x )^2}
+\begin{bmatrix}
+\bar y(\sum_{i=1}^{n}x_i^2 - \bar x^2) -\bar x(\sum_{i =1}^{n}x_iy_i - \bar x \bar y)\\
+\sum_{i = 1}^{n} (x_i -\bar x )(\bar y_i - \bar y)
+\end{bmatrix}\\
+
+&= \begin{bmatrix}
+\bar y - \hat \beta_1\bar x\\
+\frac{\sum_{i = 1}^{n} (x_i -\bar x )(\bar y_i - \bar y)}{(\sum_{i = 1}^{n}x_i -\bar x )^2}
+\end{bmatrix}\\
+\end{split}
+
+$$
+
+Therefore $\beta_1$ = $\frac{\sum_{i = 1}^{n} (x_i -\bar x )(\bar y_i - \bar y)}{(\sum_{i = 1}^{n}x_i -\bar x )^2}$ and $\beta_0$ = $\bar y - \hat \beta_1\bar x$ 
+
+##Question 2
+
+```{r}
+set.seed(100)
+n <- 1000; p <- 25
+beta <- c(1, rep(0, p - 1))
+X <- matrix(rnorm(n * p), ncol = p)
+```
+
+```{r}
+svals <- svd(t(X)%*%X)$d
+max(svals) / min(svals)
+```
+For the case that the X are not correlated with each other, the condition number of the matrix X is 1.733
+
+```{r}
+casl_ols_svd  <- function(X, y){
+    svd_output <- svd(X)
+    r <- sum(svd_output$d > .Machine$double.eps)
+    U <- svd_output$u[, 1:r]
+    V <- svd_output$v[, 1:r]
+    beta <- V %*% (t(U) %*% y / svd_output$d[1:r])
+    return(beta)
+}
+```
+
+
+```{r}
+N <- 1e4
+l2_errors <- rep(0, N)
+for (k in 1:N) {
+  y <- X %*% beta + rnorm(n)
+  betahat <- casl_ols_svd(X, y)
+l2_errors[k] <- sqrt(sum((betahat - beta)^2))
+}
+mean(l2_errors)
+```
+
+The mean square error is 0.159
+
+```{r}
+#using the ridge regression
+X1 <- t(X)%*%X + 0.5*diag(25)
+svals1 <- svd(X1)$d
+max(svals1) / min(svals1)
+```
+By using the ridge regression, we can see that the conditional number have drop a little for the case that X are not correlated with each other so the numberical stability have increased.
+
+```{r}
+N <- 1e4
+l2_errors1 <- rep(0, N)
+for (k in 1:N) {
+  y <- X %*% beta + rnorm(n)
+  betahat <- solve( crossprod(X) + diag(rep(0.5, ncol(X))) ) %*% t(X) %*% y
+l2_errors1[k] <- sqrt(sum((betahat - beta)^2))
+}
+mean(l2_errors1)
+```
+We can see that after using the ridge regression, the mean square error have decrease a little so the statistical error have decreased. 
+
+
+```{r}
+alpha <- 0.001
+X[,1] <- X[,1] * alpha + X[,2] * (1 - alpha)
+svals <- svd(t(X)%*%X)$d
+max(svals) / min(svals)
+```
+In the case that the X columns are highly correlated with each other, we can see that the condition number have increase significantly. 
+
+
+```{r}
+N <- 1e4; l2_errors <- rep(0, N)
+for (k in 1:N) {
+  y <- X %*% beta + rnorm(n)
+  betahat <- solve(crossprod(X), crossprod(X, y))
+  l2_errors[k] <- sqrt(sum((betahat - beta)^2))
+}
+mean(l2_errors)
+```
+And the mean square error also increased significantly. 
+
+
+```{r}
+X1 <- t(X)%*%X + 0.5*diag(25)
+svals1 <- svd(X1)$d
+max(svals1) / min(svals1)
+```
+After using the ridge regression, condition number have droped so the numerical stability have increased.
+
+```{r}
+N <- 1e4; l2_errors <- rep(0, N)
+for (k in 1:N) {
+  y <- X %*% beta + rnorm(n)
+  betahat <- solve( crossprod(X) + diag(rep(0.5, ncol(X))) ) %*% t(X) %*% y
+  l2_errors[k] <- sqrt(sum((betahat - beta)^2))
+}
+mean(l2_errors)
+```
+And the mean square error also droped after using ridge regression, so the statistical error have decreased. 
+
+## Question 5
+
+The loss function for lasso penalty is
+$$
+f(\beta) = \frac{1}{2n}||Y - X\beta||_2^2+ \lambda||\beta||_1
+$$
+
+To find the beta estimator, we take the derivative of f that
+$$
+\frac{\partial f}{\partial \beta} = -\frac{1}{n}X^T(Y - X\beta) + \lambda sign(\beta）
+$$
+
+set the equation to 0 we have
+
+$$
+\begin{split}
+-\frac{1}{n}X^T(Y - X\hat \beta) + \lambda sign(\hat \beta) &= 0\\
+\frac{1}{n}X^T(Y - X\hat\beta) & =\lambda sign(\hat\beta)\\
+\frac{1}{n}X^TY - \frac{1}{n}X^TX\hat\beta & = \lambda sign(\hat\beta)
+\end{split}
+
+$$
+assume each variable in X has been standardized such that $X^TX = I_p$, then we have $\frac{1}{n}X^TX = 1$
+so
+
+$$
+\begin{split}
+\frac{1}{n}X^TY - \hat\beta & = \lambda sign(\hat\beta)\\
+\hat\beta & =\frac{1}{n}X^TY - \lambda sign(\hat\beta)
+\end{split}
+
+$$
+lets say if $\hat\beta \geq 0$, if $|X_j^TY|\leq n\lambda$ then we have
+
+$$
+\hat\beta \leq\frac{1}{n}n\lambda - \lambda 
+$$
+
+so$\hat\beta$ equals to 0.
+similarly if $\hat\beta \leq 0$ and $|X_j^TY|\leq n\lambda$ then we have
+
+$$
+\hat\beta \geq -\frac{1}{n}n\lambda + \lambda
+$$
+so $\hat\beta$ equals to 0.
+

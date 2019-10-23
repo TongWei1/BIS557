@@ -1,0 +1,24 @@
+Package: homework2
+Type: Package
+Title: Fit linear models base on the provided formula and data
+Version: 0.1.0
+Authors@R: 
+    person(given = "Tong",
+           family = "Wei",
+           role = c("aut", "cre"),
+           email = "tong.wei@yale.edu")
+Maintainer: The package maintainer <tong.wei@yale.edu>
+Description: This package contains one function linear_model that fit a linear model based 
+    for the provided data based on the formula. Users can choose to use contrast or not.
+License: LGPL-2
+Encoding: UTF-8
+LazyData: true
+Imports:
+    MASS,
+    dplyr
+Suggests: 
+    testthat,
+    knitr,
+    rmarkdown
+RoxygenNote: 6.1.1
+VignetteBuilder: knitr

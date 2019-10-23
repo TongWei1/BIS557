@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1571864505269.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2101634834",
+    "id" : "B5298540",
+    "lastKnownWriteTime" : 1571864514,
+    "last_content_update" : 1571864514140,
+    "path" : "~/Desktop/comp stats/homework2/homework2/tests/testthat.R",
+    "project_path" : "tests/testthat.R",
+    "properties" : {
+        "cursorPosition" : "54,33",
+        "scrollLine" : "49"
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

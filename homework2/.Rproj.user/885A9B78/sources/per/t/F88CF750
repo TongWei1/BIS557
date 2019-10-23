@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1571789933317.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3665264951",
+    "id" : "F88CF750",
+    "lastKnownWriteTime" : 1571864268,
+    "last_content_update" : 1571864268353,
+    "path" : "~/Desktop/comp stats/homework2/homework2/R/opimizing.R",
+    "project_path" : "R/opimizing.R",
+    "properties" : {
+        "cursorPosition" : "17,4",
+        "scrollLine" : "8",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
